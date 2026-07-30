@@ -1,0 +1,11 @@
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+
+# 颜色 (R, G, B)
+BLACK = (30, 30, 30)
+WHITE = (255, 255, 255)
+RED = (200, 50, 50)
+GREEN = (50, 200, 50)
+BLUE = (50, 50, 200)
+# 金黄色
+GOLD = (218, 165, 32)
