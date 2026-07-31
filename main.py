@@ -1,7 +1,36 @@
 import pygame
 import sys
 import config
-import card
+import game 
+
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT))
+    pygame.display.set_caption("Card Battle")
+    clock = pygame.time.Clock()
+
+    game_instance = game.Game(screen)
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        game_instance.update()
+        game_instance.render()
+
+        pygame.display.flip()
+        clock.tick(120)
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
 
 # def main():
 #     pygame.init()
@@ -21,20 +50,11 @@ import card
 
 #         clock.tick(120)
 
-if __name__ == "__main__":
-    strike = Card("斩击", "attack", 1, 6, "造成 6 点伤害")
-    defend = Card("防御", "defense", 1, 5, "获得 5 点护盾")
-    bash   = Card("痛击", "attack", 2, 8, "造成 8 点伤害，施加 2 层虚弱")
-
-    for card in [strike, defend, bash]:
-        print(card)
-
-
-if __name__ == "__main__":
-    main()
 
 
 
+# if __name__ == "__main__":
+#     main()
 
 
 
