@@ -1,4 +1,6 @@
 import pygame
+import config
+
 
 class Player:
     def __init__(self, name, hp, max_energy):
