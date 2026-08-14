@@ -1,4 +1,3 @@
-import random
 import pygame
 import config
 
@@ -8,13 +7,15 @@ class Enemy:
         self.hp = hp
         self.max_hp = hp
         self.intent_pool = intent_pool
+        self.intent_index = 0 # 意图池循环指针
         self.block = 0 # 当前护盾值
         self.status_effects = [] # 存储状态效果
         self.intent = None
 
     def decide_intent(self):
-        """AI 选择本回合行动（简单版：随机挑一个）"""
-        self.intent = random.choice(self.intent_pool)
+        """AI 按意图池顺序循环选择本回合行动"""
+        self.intent = self.intent_pool[self.intent_index]
+        self.intent_index = (self.intent_index + 1) % len(self.intent_pool)
     
     def take_damage(self, amount):
         # """受到伤害，先扣护盾"""
