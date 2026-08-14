@@ -41,6 +41,21 @@ class Card:
         screen.blit(cost_text, (x + 130, y + 10))
 
 
+    def play(self, game):
+        if self.card_type == "attack":
+            game.enemy.take_damage(self.value)
+        elif self.card_type == "defense":
+            game.player.block += self.value
+
+        if self.buffs:
+            for buff in self.buffs:
+                if self.buff_target == "player":
+                    game.player.status_effects.append(buff)
+                elif self.buff_target == "enemy":
+                    game.enemy.status_effects.append(buff)
+
+
+
 
 # 卡牌模板，后面可以放另外的文件里保管
 uppercut = Card("上勾拳", "attack", 2, 12, "enemy1", 
@@ -54,6 +69,11 @@ bash = Card("痛击", "attack", 2, 8, "enemy", "造成 8 点伤害，施加易�
              buff_target="enemy")
 poison = Card("毒击", "attack", 2, 4, "enemy", "造成 4 点伤害，施加中毒")
 smash = Card("重击", "attack", 3, 15, "enemy", "造成 15 点伤害")
+
+
+
+
+
 
 
 
